@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vizago — Votre candidature Canada, préparée comme un pro.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bleu: #2563EB;
+            --bleu-dark: #1D4ED8;
+            --bleu-clair: #EFF6FF;
+            --noir: #0F172A;
+            --blanc: #FAFAF9;
+            --gris: #64748B;
+            --gris-clair: #F1F5F9;
+            --whatsapp: #25D366;
+            --whatsapp-dark: #1fb855;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--blanc);
+            color: var(--noir);
+            overflow-x: hidden;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            position: sticky;
+            top: 0; z-index: 100;
+            background: rgba(250,250,249,0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(15,23,42,0.06);
+            padding: 0 5%; height: 68px;
+            display: flex;
+            align-items: center; justify-content: space-between;
+        }
+        .logo {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem; letter-spacing: -0.02em; color: var(--noir);
+            display: flex; align-items: center; gap: 8px;
+        }
+        .logo-dot { width: 10px; height: 10px; background: var(--bleu); border-radius: 50%; display: inline-block; }
+        .btn-header {
+            background: var(--bleu);
+            color: white;
+            font-family: 'Syne', sans-serif; font-weight: 700;
+            font-size: 0.82rem; letter-spacing: 0.05em; text-transform: uppercase;
+            padding: 10px 22px; border-radius: 100px; text-decoration: none;
+            transition: all 0.2s;
+        }
+        .btn-header:hover { background: var(--bleu-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(37,99,235,0.25); }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 92vh;
+            display: grid; grid-template-columns: 1fr 1fr;
+            align-items: center; padding: 0 5%; gap: 60px;
+            position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; top: -200px; right: -200px;
+            width: 700px; height: 700px;
+            background: radial-gradient(circle, rgba(37,99,235,0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center; gap: 8px;
+            background: rgba(37,99,235,0.08); border: 1px solid rgba(37,99,235,0.15);
+            color: var(--bleu); font-size: 0.78rem; font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 100px; margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2.2rem, 4vw, 3.4rem);
+            line-height: 1.15; letter-spacing: -0.03em;
+            color: var(--noir); margin-bottom: 24px;
+        }
+        .hero h1 em { font-style: normal; color: var(--bleu); }
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--gris); line-height: 1.7;
+            max-width: 460px; margin-bottom: 36px;
+        }
+        .hero-checks { display: flex; flex-direction: column; gap: 12px; margin-bottom: 40px; }
+        .check-item { display: flex; align-items: center; gap: 12px; font-size: 0.95rem; font-weight: 500; }
+        .check-icon {
+            width: 22px;
+            height: 22px; background: var(--bleu); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; color: white; font-size: 0.6rem;
+        }
+        .hero-cta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center; gap: 8px;
+            background: var(--bleu); color: white;
+            font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem;
+            padding: 16px 32px; border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.25s; box-shadow: 0 4px 20px rgba(37,99,235,0.2);
+        }
+        .btn-primary:hover { background: var(--bleu-dark); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(37,99,235,0.3); }
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center; gap: 8px;
+            background: var(--whatsapp); color: white;
+            font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem;
+            padding: 16px 28px; border-radius: 12px;
+            text-decoration: none; transition: all 0.25s;
+        }
+        .btn-whatsapp:hover { background: var(--whatsapp-dark); transform: translateY(-2px); }
+
+        /* Hero Card */
+        .hero-card {
+            background: white;
+            border-radius: 24px; padding: 40px;
+            box-shadow: 0 20px 80px rgba(15,23,42,0.08);
+            border: 1px solid rgba(15,23,42,0.04); position: relative;
+        }
+        .hero-card::before { content: '🇨🇦'; position: absolute; top: -20px; right: 30px; font-size: 2.5rem; }
+        .card-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; color: var(--noir); margin-bottom: 6px; }
+        .card-sub { font-size: 0.85rem; color: var(--gris); margin-bottom: 28px; }
+        .offer-items { display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
+        .offer-item { display: flex; align-items: flex-start; gap: 14px; padding: 14px 16px; background: var(--gris-clair); border-radius: 12px; }
+        .offer-icon { font-size: 1.4rem; flex-shrink: 0; }
+        .offer-item-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--noir); }
+        .offer-item-desc { font-size: 0.8rem; color: var(--gris); margin-top: 2px; }
+        .offer-bonus {
+            display: flex;
+            align-items: flex-start; gap: 14px; padding: 14px 16px;
+            background: rgba(37,99,235,0.05); border: 1px dashed rgba(37,99,235,0.25);
+            border-radius: 12px; margin-bottom: 28px;
+        }
+        .price-block { text-align: center; padding: 20px; background: var(--bleu); border-radius: 14px; color: white; }
+        .price-label { font-size: 0.8rem; opacity: 0.85; margin-bottom: 4px; }
+        .price-amount { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 2.8rem; line-height: 1; }
+        .price-note { font-size: 0.78rem; opacity: 0.8; margin-top: 4px; }
+
+        /* ===== TEAM BANNER ===== */
+        .team-banner {
+            background: linear-gradient(135deg, #1e3a5f 0%, #1D4ED8 100%);
+            padding: 28px 5%;
+            display: flex; align-items: center; justify-content: center;
+            gap: 20px; flex-wrap: wrap; text-align: center;
+        }
+        .team-banner-text { color: white; }
+        .team-banner-text p:first-child { font-size: 1rem; font-weight: 500; opacity: 0.95; margin-bottom: 6px; }
+        .team-banner-text p:last-child { font-size: 0.9rem; opacity: 0.75; direction: rtl; font-style: italic; }
+
+        /* ===== SOCIAL PROOF ===== */
+        .social-proof {
+            background: var(--noir);
+            padding: 24px 5%;
+            display: flex; align-items: center; justify-content: center;
+            gap: 48px; flex-wrap: wrap;
+        }
+        .stat-item { text-align: center; }
+        .stat-num { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.8rem; color: var(--bleu); }
+        .stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-top: 2px; }
+        .stat-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.1); }
+
+        /* ===== FORM SECTION ===== */
+        .form-section {
+            padding: 80px 5%;
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 60px; align-items: start; max-width: 1200px; margin: 0 auto;
+        }
+        .section-tag {
+            display: inline-block;
+            font-size: 0.75rem; font-weight: 700;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--bleu); margin-bottom: 12px;
+        }
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 16px;
+        }
+        .section-desc { color: var(--gris); font-size: 0.95rem; line-height: 1.7; margin-bottom: 32px; }
+
+        /* Disclaimer */
+        .disclaimer-box {
+            background: #FFF7ED;
+            border: 1px solid #FED7AA;
+            border-radius: 14px; padding: 18px 20px; margin-bottom: 24px;
+            display: flex; gap: 12px; align-items: flex-start;
+        }
+        .disclaimer-box p { font-size: 0.82rem; color: #92400E; line-height: 1.6; }
+        .disclaimer-box strong { color: #78350F; }
+
+        /* Trust items */
+        .trust-items { display: flex; flex-direction: column; gap: 16px; }
+        .trust-item {
+            display: flex; gap: 18px; align-items: flex-start;
+            padding: 20px; background: white; border-radius: 16px;
+            border: 1px solid rgba(15,23,42,0.05); transition: transform 0.2s;
+        }
+        .trust-item:hover { transform: translateX(4px); }
+        .trust-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+        .trust-item-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; }
+        .trust-item-desc { font-size: 0.8rem; color: var(--gris); line-height: 1.6; }
+
+        /* Form Card */
+        .form-card {
+            background: white;
+            border-radius: 24px; padding: 40px;
+            box-shadow: 0 10px 50px rgba(15,23,42,0.07);
+            border: 1px solid rgba(15,23,42,0.04);
+        }
+        .form-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.3rem; margin-bottom: 6px; }
+        .form-subtitle { font-size: 0.85rem; color: var(--gris); margin-bottom: 24px; }
+
+        .video-wrapper {
+            width: 100%;
+            aspect-ratio: 16/9; background: #000;
+            border-radius: 14px; overflow: hidden; margin-bottom: 24px;
+            border: 1px solid rgba(15,23,42,0.1); position: relative;
+        }
+        .video-wrapper iframe, .video-wrapper video { width: 100%; height: 100%; border: none; }
+        .video-placeholder {
+            display: flex;
+            flex-direction: column; align-items: center;
+            justify-content: center; height: 100%; color: #94A3B8;
+            font-size: 0.85rem; text-align: center; padding: 20px;
+            background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+        }
+
+        .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+        label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gris); }
+        input {
+            font-family: 'DM Sans', sans-serif; font-size: 0.95rem;
+            padding: 14px; border: 1.5px solid #E2E8F0; border-radius: 12px;
+            background: var(--blanc); color: var(--noir); transition: all 0.2s; outline: none;
+            width: 100%;
+        }
+        input:focus { border-color: var(--bleu); background: white; box-shadow: 0 0 0 4px rgba(37,99,235,0.1); }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--whatsapp); color: white;
+            font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem;
+            padding: 16px; border-radius: 12px; border: none; cursor: pointer;
+            transition: all 0.25s; letter-spacing: 0.02em; margin-top: 8px;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+        }
+        .btn-submit:hover { background: var(--whatsapp-dark); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37,211,102,0.3); }
+        .btn-submit svg { width: 22px; height: 22px; fill: currentColor; }
+
+        /* ===== POPUP ===== */
+        .popup-overlay {
+            display: none;
+            position: fixed; inset: 0; z-index: 999;
+            background: rgba(15,23,42,0.6); backdrop-filter: blur(4px);
+            align-items: center; justify-content: center; padding: 20px;
+        }
+        .popup-overlay.active { display: flex; animation: fadeIn 0.3s ease; }
+        .popup-box {
+            background: white;
+            border-radius: 24px; padding: 40px 36px;
+            max-width: 440px; width: 100%; text-align: center;
+            box-shadow: 0 30px 80px rgba(15,23,42,0.2);
+            animation: slideUp 0.35s ease;
+            position: relative;
+        }
+        .popup-emoji { font-size: 3rem; margin-bottom: 16px; display: block; }
+        .popup-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.4rem; color: var(--noir); margin-bottom: 12px; }
+        .popup-msg { font-size: 0.95rem; color: var(--gris); line-height: 1.7; margin-bottom: 16px; }
+        .popup-alert {
+            background: #FFF7ED;
+            border: 1px solid #FED7AA;
+            border-radius: 12px; padding: 14px 16px; margin-bottom: 16px;
+            font-size: 0.88rem; color: #92400E; line-height: 1.6;
+        }
+        .popup-alert strong { color: #78350F; display: block; margin-bottom: 4px; }
+        .popup-arabic { font-size: 0.88rem; color: var(--gris); direction: rtl; font-style: italic; margin-bottom: 20px; line-height: 1.6; }
+        .popup-timer { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.8rem; color: var(--gris); }
+        .popup-progress { width: 100%; height: 4px; background: #E2E8F0; border-radius: 100px; margin-top: 16px; overflow: hidden; }
+        .popup-progress-bar { height: 100%; background: var(--bleu); border-radius: 100px; width: 100%; transition: width linear; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Footer */
+        footer { background: var(--noir); color: rgba(255,255,255,0.4); text-align: center; padding: 28px 5%; font-size: 0.82rem; }
+        footer strong { color: white; }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero { grid-template-columns: 1fr; padding-top: 48px; padding-bottom: 48px; min-height: auto; gap: 40px; }
+            .form-section { grid-template-columns: 1fr; }
+            .stat-divider { display: none; }
+            .social-proof { gap: 28px; }
+        }
+        @media (max-width: 600px) {
+            .hero-cta { flex-direction: column; }
+            .btn-primary, .btn-whatsapp { width: 100%; justify-content: center; }
+            .form-card, .hero-card { padding: 24px; }
+        }
+
+        /* Animations */
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+        .hero-content > * { animation: fadeUp 0.6s ease both; }
+        .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+        .hero-content > *:nth-child(2) { animation-delay: 0.2s; }
+        .hero-content > *:nth-child(3) { animation-delay: 0.3s; }
+        .hero-content > *:nth-child(4) { animation-delay: 0.4s; }
+        .hero-content > *:nth-child(5) { animation-delay: 0.5s; }
+        .hero-card { animation: fadeUp 0.7s ease 0.3s both; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    </style>
+
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      
+      // CONFIGURATION DE CE SOIR : Remplacer 1234567890 par ton identifiant Pixel unique
+      fbq('init', '1234567890'); 
+      fbq('track', 'PageView');
+    </script>
+    <noscript>
+      <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1234567890&ev=PageView&noscript=1"/>
+    </noscript>
+</head>
+<body>
+
+    <header>
+        <div class="logo"><span class="logo-dot"></span>VIZAGO</div>
+        <a href="#formulaire" class="btn-header">Réserver un appel →</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span>🍁</span> Préparation de dossier Canada — pas un cabinet d'immigration
+            </div>
+            <h1>
+                Votre candidature Canada,<br>
+                <em>préparée comme un pro.</em>
+            </h1>
+            <p class="hero-sub">
+                On ne vous promet pas un visa. On vous prépare un dossier solide — CV canadien, lettre de motivation ciblée, liste de recruteurs actifs — pour que vous postuliez avec les meilleures chances possibles.
+            </p>
+            <div class="hero-checks">
+                <div class="check-item">
+                    <div class="check-icon">✓</div>
+                    <span>Dossier livré sous 48h, adapté à votre métier</span>
+                </div>
+                <div class="check-item">
+                    <div class="check-icon">✓</div>
+                    <span>Aucune promesse mensongère — que du concret</span>
+                </div>
+                <div class="check-item">
+                    <div class="check-icon">✓</div>
+                    <span>Suivi WhatsApp avec notre équipe jusqu'à la livraison</span>
+                </div>
+            </div>
+            <div class="hero-cta">
+                <a href="#formulaire" class="btn-primary">🚀 Commencer mon dossier</a>
+                <a href="https://wa.me/VOTRENUMERO?text=Bonjour%2C%20je%20veux%20préparer%20mon%20dossier%20Canada" class="btn-whatsapp" target="_blank">💬 WhatsApp</a>
+            </div>
+        </div>
+
+        <div class="hero-card">
+            <div class="card-title">Pack Candidature Canada</div>
+            <div class="card-sub">Tout ce dont vous avez besoin pour postuler au Canada</div>
+            <div class="offer-items">
+                <div class="offer-item">
+                    <div class="offer-icon">📄</div>
+                    <div>
+                        <div class="offer-item-title">CV Professionnel</div>
+                        <div class="offer-item-desc">Optimisé pour les recruteurs canadiens, en français ou anglais</div>
+                    </div>
+                </div>
+                <div class="offer-item">
+                    <div class="offer-icon">✉️</div>
+                    <div>
+                        <div class="offer-item-title">Lettre de Motivation</div>
+                        <div class="offer-item-desc">Personnalisée selon votre secteur et votre province visée</div>
+                    </div>
+                </div>
+                <div class="offer-item">
+                    <div class="offer-icon">📋</div>
+                    <div>
+                        <div class="offer-item-title">Liste de Recruteurs</div>
+                        <div class="offer-item-desc">Contacts ciblés au Canada selon votre métier</div>
+                    </div>
+                </div>
+            </div>
+            <div class="offer-bonus">
+                <div class="offer-icon">🎁</div>
+                <div>
+                    <div class="offer-item-title" style="color:#1D4ED8;">BONUS OFFERT</div>
+                    <div class="offer-item-desc">Guide PDF : Utiliser LinkedIn pour trouver un emploi au Canada</div>
+                </div>
+            </div>
+            <div class="price-block">
+                <div class="price-label">Prix tout compris</div>
+                <div class="price-amount">900 DH</div>
+                <div class="price-note">Paiement sécurisé • Livraison sous 48h</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="team-banner">
+        <span style="font-size:2rem;">💪</span>
+        <div class="team-banner-text">
+            <p>Notre équipe travaille sans relâche pour que chaque dossier soit livré dans les délais, avec le soin qu'il mérite.</p>
+            <p>فريقنا متاح من الاثنين إلى السبت — اطرح أسئلتك، سنرد عليك.</p>
+        </div>
+    </div>
+
+    <div class="social-proof">
+        <div class="stat-item"><div class="stat-num">48h</div><div class="stat-label">Délai de livraison</div></div>
+        <div class="stat-divider"></div>
+        <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Personnalisé</div></div>
+        <div class="stat-divider"></div>
+        <div class="stat-item"><div class="stat-num">900 DH</div><div class="stat-label">Tout inclus</div></div>
+        <div class="stat-divider"></div>
+        <div class="stat-item"><div class="stat-num">🍁</div><div class="stat-label">Spécialiste Canada</div></div>
+    </div>
+
+    <section class="form-section" id="formulaire">
+        <div>
+            <span class="section-tag">Pourquoi Vizago ?</span>
+            <h2 class="section-title">Votre projet mérite un vrai accompagnement</h2>
+            <p class="section-desc">On ne vous vend pas un template générique. Chaque dossier est préparé manuellement, adapté à votre profil et votre secteur.</p>
+
+            <div class="disclaimer-box">
+                <span style="font-size:1.3rem; flex-shrink:0;">🚫</span>
+                <p><strong>Ce que nous ne faisons PAS</strong><br>
+                Vizago n'est pas un cabinet d'immigration agréé. Nous préparons votre dossier de candidature professionnelle. Vous postulez vous-même, avec des outils de qualité. Méfiez-vous de tout service qui vous "garantit" un visa.</p>
+            </div>
+
+            <div class="trust-items">
+                <div class="trust-item">
+                    <div class="trust-icon" style="background:#EFF6FF;">🛡️</div>
+                    <div>
+                        <div class="trust-item-title">Données 100% confidentielles</div>
+                        <div class="trust-item-desc">Vos informations servent uniquement à préparer votre dossier. Jamais partagées, jamais revendues.</div>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon" style="background:#EFF6FF;">⚡</div>
+                    <div>
+                        <div class="trust-item-title">Réponse rapide</div>
+                        <div class="trust-item-desc">Notre équipe analyse votre profil dès réception et vous contacte directement sur WhatsApp.</div>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon" style="background:#EFF6FF;">🎯</div>
+                    <div>
+                        <div class="trust-item-title">Dossier sur mesure</div>
+                        <div class="trust-item-desc">CV, lettre et liste de recruteurs adaptés à votre métier et à la province canadienne visée.</div>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon" style="background:#F0FDF4;">🎁</div>
+                    <div>
+                        <div class="trust-item-title">Guide LinkedIn OFFERT</div>
+                        <div class="trust-item-desc">Un PDF exclusif pour utiliser LinkedIn efficacement et décrocher des entretiens depuis le Maroc.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-card" id="form-container">
+            <div class="form-title">Discutons de votre projet</div>
+            <div class="form-subtitle">Regardez la vidéo puis réservez votre appel gratuit.</div>
+
+            <div class="video-wrapper">
+                <div class="video-placeholder">
+                    <span style="font-size:2rem; margin-bottom:8px;">🎬</span>
+                    <strong style="color:#CBD5E1;">Votre vidéo Avatar IA</strong>
+                    <span style="font-size:0.75rem; margin-top:4px; opacity:0.6;">[Insérez votre iframe ici]</span>
+                </div>
+            </div>
+
+            <form id="lead-form" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="nom">Nom ou Prénom</label>
+                    <input type="text" id="nom" name="nom" required placeholder="Ex: Amine">
+                </div>
+                <div class="form-group">
+                    <label for="tel">Numéro WhatsApp</label>
+                    <input type="tel" id="tel" name="tel" required placeholder="Ex: +212 661 234567">
+                </div>
+                <button type="submit" class="btn-submit">
+                    <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.5-5.739-1.451L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.966C16.228 1.975 13.763 1.05 11.201 1.05 5.762 1.05 1.34 5.421 1.336 10.85c-.001 1.744.463 3.448 1.343 4.965l-.973 3.55 3.64-.954zm10.954-7.64c-.23-.115-1.363-.674-1.57-.751-.207-.076-.358-.115-.508.114-.15.228-.579.751-.71.901-.13.15-.26.168-.49.053-.23-.115-.97-.358-1.848-1.143-.683-.61-1.144-1.365-1.278-1.6-.134-.23-.014-.354.101-.469.103-.103.23-.269.345-.404.115-.135.153-.23.23-.385.077-.154.039-.289-.02-.404-.057-.115-.508-1.229-.696-1.684-.183-.44-.368-.381-.508-.388-.13-.007-.279-.008-.428-.008-.15 0-.395.056-.602.284-.207.228-.791.773-.791 1.884 0 1.111.808 2.186.919 2.34.111.154 1.59 2.428 3.853 3.404.538.232 1.022.371 1.37.482.54.172 1.03.148 1.417.09.432-.065 1.363-.557 1.557-1.096.194-.539.194-1.002.135-1.095-.058-.094-.207-.154-.437-.27z"/></svg>
+                    Réserver mon appel gratuit
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 <strong>Vizago</strong> — Tous droits réservés. | Préparation de dossier Canada</p>
+    </footer>
+
+    <div class="popup-overlay" id="popup">
+        <div class="popup-box">
+            <span class="popup-emoji">🎉</span>
+            <div class="popup-title">Demande reçue !</div>
+            <p class="popup-msg">Notre équipe va analyser votre profil et vous contacter sur WhatsApp <strong>dans les plus brefs délais</strong> — parfois dans l'heure !</p>
+            <div class="popup-alert">
+                <strong>⚠️ Restez vigilant !</strong>
+                Gardez votre téléphone à portée et vérifiez vos messages WhatsApp. Ne manquez pas notre appel !
+            </div>
+            <p class="popup-arabic">فريقنا سيتصل بك في أقرب وقت ممكن — كن جاهزاً على هاتفك !</p>
+            <div class="popup-timer">⏱ Fermeture automatique dans <span id="countdown">6</span>s</div>
+            <div class="popup-progress"><div class="popup-progress-bar" id="progress-bar"></div></div>
+        </div>
+    </div>
+
+    <script>
+        // CONFIGURATION CE SOIR : Remplace cette URL par celle générée lors du déploiement de ton Apps Script
+        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyTiZyRoyQmZ3OM0z0G1IsQRu8YupkIaTFrr-jT5c0JAN5WzeUU6LZ9IC89GlANp_zr/exec";
+
+        async function handleSubmit(e) {
+            e.preventDefault();
+            const btn = document.querySelector('.btn-submit');
+            btn.innerHTML = `<svg style="animation:spin 1s linear infinite;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none" opacity="0.25"></circle><path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg> Transmission...`;
+            btn.disabled = true;
+
+            const nomClient = document.getElementById('nom').value.trim();
+            const telClient = document.getElementById('tel').value.trim();
+
+            // 1. DÉCLENCHEMENT DU PIXEL FACEBOOK (Mise à jour MAD - Maroc)
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'Lead', {
+                    content_name: 'Reservation Appel Canada',
+                    currency: 'MAD',
+                    value: 900.00
+                });
+            }
+
+            // 2. CORRECTION CRITIQUE DU PAYLOAD (Identique mot pour mot aux colonnes de ta capture Google Sheet)
+            const payload = {
+                action: "addClient",
+                nom: nomClient,
+                telephone: telClient,
+                metier: "En attente d'appel",
+                statutAppel: "À appeler",
+                statutPaiement: "Non Payé",
+                montant: "0 DH",
+                observations: "Nouveau lead Landing Page Vizago."
+            };
+
+            try {
+                await fetch(APPS_SCRIPT_URL, {
+                    method: 'POST', mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+            } catch (err) { 
+                console.log('Lead envoyé');
+            }
+
+            document.getElementById('lead-form').style.display = 'none';
+            showPopup();
+        }
+
+        function showPopup() {
+            const popup = document.getElementById('popup');
+            const bar = document.getElementById('progress-bar');
+            const countEl = document.getElementById('countdown');
+            const duration = 6000;
+
+            popup.classList.add('active');
+            bar.style.transition = `width ${duration}ms linear`;
+            setTimeout(() => bar.style.width = '0%', 50);
+
+            let count = 6;
+            const interval = setInterval(() => {
+                count--;
+                countEl.textContent = count;
+                if (count <= 0) {
+                    clearInterval(interval);
+                    popup.classList.remove('active');
+                }
+            }, 1000);
+        }
+
+        document.getElementById('popup').addEventListener('click', function(e) {
+            if (e.target === this) this.classList.remove('active');
+        });
+    </script>
+
+    <style>
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    </style>
+</body>
+</html>
