@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vizago — Ton dossier Canada prêt en 48h</title>
+    <title>Visago — Ton dossier Canada prêt en 48h</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -24,11 +24,11 @@
             display: flex; align-items: center; justify-content: space-between;
         }
         .logo {
-            font-family: 'Playfair Display', serif; font-weight: 900;
-            font-size: 1.5rem; letter-spacing: -0.01em; color: var(--noir);
-            display: flex; align-items: center; gap: 8px;
+            font-family: 'Inter', sans-serif; font-weight: 800;
+            font-size: 1.4rem; letter-spacing: -0.03em; color: var(--noir);
+            display: flex; align-items: center; gap: 4px; cursor: pointer;
         }
-        .logo em { font-style: normal; color: var(--bleu); }
+        .logo span { color: var(--bleu); }
         .btn-header {
             background: var(--noir); color: white; font-weight: 600;
             font-size: 0.8rem; padding: 9px 20px; border-radius: 8px;
@@ -314,9 +314,15 @@
 </head>
 <body>
 
-    <!-- HEADER -->
+    <!-- HEADER AVEC LOGO VISAGO PREMIUM -->
     <header>
-        <div class="logo">Vi<em>za</em>go</div>
+        <div class="logo">
+            V<span>i</span>sago
+            <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: var(--bleu); margin-left: 2px; transform: rotate(15deg); display: inline-block; vertical-align: middle;">
+                <path d="M12 2s.5 2 1.5 2.5c0 0 2-1 2.5-.5s-.5 2.5-.5 2.5 2 .5 2 1.5-2 1-2 1.5 1 2 .5 2.5-2-.5-2.5-.5-.5 2-1.5 2v-3H11v3s-1 0-1.5-2c0 0-2 .5-2.5.5s.5-1.5.5-2.5-2-.5-2-1.5 2-1 2-1.5-.5-2-.5-2.5 2.5.5 2.5.5S10.5 4.5 11 4s1-2 1-2z"/>
+                <rect x="11.5" y="15" width="1" height="5" transform="rotate(10 11.5 15)"/>
+            </svg>
+        </div>
         <a href="#formulaire" class="btn-header">Appel gratuit →</a>
     </header>
 
@@ -416,13 +422,13 @@
 
             <!-- LEFT -->
             <div>
-                <div class="section-eyebrow">Pourquoi Vizago ?</div>
+                <div class="section-eyebrow">Pourquoi Visago ?</div>
                 <h2 class="section-title" style="font-size:clamp(1.6rem,3vw,2.2rem);">Votre projet mérite un vrai accompagnement</h2>
                 <p class="section-desc">Pas de template générique. Chaque dossier est préparé manuellement, adapté à votre profil et votre secteur.</p>
 
                 <div class="disclaimer">
                     <span style="font-size:1.2rem;flex-shrink:0;">🚫</span>
-                    <p><strong>Ce que nous ne faisons PAS</strong><br>Vizago n'est pas un cabinet d'immigration agréé. Nous préparons votre dossier de candidature. Vous postulez vous-même. Méfiez-vous de tout service qui garantit un visa.</p>
+                    <p><strong>Ce que nous ne faisons PAS</strong><br>Visago n'est pas un cabinet d'immigration agréé. Nous préparons votre dossier de candidature. Vous postulez vous-même. Méfiez-vous de tout service qui garantit un visa.</p>
                 </div>
 
                 <div class="trust-list">
@@ -484,7 +490,7 @@
 
     <!-- FOOTER -->
     <footer>
-        <p>&copy; 2026 <strong>Vizago</strong> — Préparation de dossier Canada | Tous droits réservés</p>
+        <p>&copy; 2026 <strong>Visago</strong> — Préparation de dossier Canada | Tous droits réservés</p>
     </footer>
 
     <!-- POPUP -->
