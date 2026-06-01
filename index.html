@@ -349,7 +349,7 @@
         <div class="stat-sep"></div>
         <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Personnalisé</div></div>
         <div class="stat-sep"></div>
-        <div class="stat"><div class="stat-n">0€</div><div class="stat-l">Appel offert</div></div>
+        <div class="stat"><div class="stat-n">0 DH</div><div class="stat-l">Appel offert</div></div>
     </div>
 
     <!-- PACKS -->
@@ -512,6 +512,15 @@
             btn.innerHTML = `<svg style="animation:spin 1s linear infinite;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none" opacity="0.25"></circle><path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg> Transmission...`;
             btn.disabled = true;
 
+            const selectedPack = document.getElementById('pack').value;
+            let finalPrice = "En attente";
+            
+            if (selectedPack.includes("900 DH")) {
+                finalPrice = "900 DH";
+            } else if (selectedPack.includes("1300 DH")) {
+                finalPrice = "1300 DH";
+            }
+
             const payload = {
                 action: "addClient",
                 nom: document.getElementById('nom').value.trim(),
@@ -519,8 +528,8 @@
                 statutAppel: "À appeler",
                 metier: "En attente d'appel",
                 statutPaiement: "Non Payé",
-                montant: "0 DH",
-                observations: "Pack souhaité : " + document.getElementById('pack').value
+                montant: finalPrice,
+                observations: "Pack souhaité : " + selectedPack
             };
 
             try {
