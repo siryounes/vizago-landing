@@ -24,12 +24,10 @@
             display: flex; align-items: center; justify-content: space-between;
         }
         .logo {
-            font-family: 'Cairo', sans-serif; font-weight: 900;
-            font-size: 1.5rem; letter-spacing: 0.02em; color: var(--noir);
-            display: flex; align-items: center; gap: 4px;
-            direction: ltr;
+            font-weight: 900; font-size: 1.5rem; letter-spacing: -0.03em; color: var(--noir);
+            display: flex; align-items: center; gap: 6px; cursor: pointer;
         }
-        .logo span { color: var(--bleu); }
+        .logo span { color: var(--bleu); font-family: sans-serif; }
         .btn-header {
             background: var(--noir); color: white; font-weight: 700;
             font-size: 0.85rem; padding: 9px 20px; border-radius: 8px;
@@ -38,405 +36,269 @@
         .btn-header:hover { background: var(--bleu); }
 
         /* ===== HERO ===== */
-        .hero-video {
-            background: var(--noir); padding: 60px 6% 0;
-            text-align: center; position: relative; overflow: hidden;
+        .hero {
+            background: var(--noir); padding: 60px 6% 80px; text-align: center; position: relative; overflow: hidden;
         }
-        .hero-video::before {
+        .hero::before {
             content: ''; position: absolute; inset: 0;
             background: radial-gradient(ellipse at 50% 0%, rgba(26,86,219,0.15) 0%, transparent 65%);
         }
         .hero-pretitle {
             display: inline-flex; align-items: center; gap: 8px;
             background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
-            color: rgba(255,255,255,0.7); font-size: 0.8rem; font-weight: 700;
-            padding: 6px 16px; border-radius: 100px; margin-bottom: 24px;
-            position: relative; z-index: 1;
+            color: rgba(255,255,255,0.7); font-size: 0.75rem; font-weight: 700;
+            padding: 6px 16px; border-radius: 100px; margin-bottom: 24px; position: relative; z-index: 1;
         }
         .hero-title {
-            font-family: 'Cairo', sans-serif; font-weight: 900;
-            font-size: clamp(2rem, 5vw, 3.6rem); line-height: 1.2;
-            color: white; margin-bottom: 16px;
-            position: relative; z-index: 1;
+            font-weight: 900; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.2;
+            color: white; margin-bottom: 16px; position: relative; z-index: 1;
         }
         .hero-title em { font-style: normal; color: #60a5fa; }
         .hero-sub {
-            font-size: 1rem; color: rgba(255,255,255,0.55);
-            max-width: 540px; margin: 0 auto 40px; line-height: 1.9;
-            position: relative; z-index: 1;
+            font-size: 1.05rem; color: rgba(255,255,255,0.65);
+            max-width: 550px; margin: 0 auto 40px; line-height: 1.8; position: relative; z-index: 1;
         }
-        .video-container {
-            position: relative; z-index: 1; max-width: 700px; margin: 0 auto;
-            border-radius: 20px 20px 0 0; overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 -20px 60px rgba(26,86,219,0.2);
-        }
-        .video-box {
-            aspect-ratio: 16/9; background: #111827;
-            display: flex; flex-direction: column;
-            align-items: center; justify-content: center; gap: 12px;
-        }
-        .video-box span { font-size: 2.5rem; }
-        .video-box p { color: #475569; font-size: 0.85rem; }
-        .video-box strong { color: #64748b; display: block; font-size: 0.9rem; margin-top: 4px; }
 
         /* ===== STATS BAR ===== */
         .stats-bar {
             background: white; border-bottom: 1px solid #E5E5E2;
-            padding: 20px 6%; display: flex;
-            align-items: center; justify-content: center;
-            gap: 48px; flex-wrap: wrap;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            padding: 20px 6%; display: flex; align-items: center; justify-content: center;
+            gap: 48px; flex-wrap: wrap; box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
         .stat { text-align: center; }
-        .stat-n { font-family: 'Cairo', sans-serif; font-weight: 900; font-size: 1.6rem; color: var(--bleu); line-height: 1; direction: ltr; }
-        .stat-l { font-size: 0.78rem; color: var(--gris); font-weight: 700; margin-top: 3px; }
+        .stat-n { font-weight: 900; font-size: 1.8rem; color: var(--bleu); line-height: 1; }
+        .stat-l { font-size: 0.8rem; color: var(--gris); font-weight: 700; margin-top: 5px; }
         .stat-sep { width: 1px; height: 36px; background: #E5E5E2; }
 
-        /* ===== PACKS ===== */
+        /* ===== PACKS SECTION ===== */
         .packs-section { padding: 80px 6%; max-width: 1100px; margin: 0 auto; }
-        .section-eyebrow {
-            font-size: 0.78rem; font-weight: 700; color: var(--bleu); margin-bottom: 12px;
-        }
-        .section-title {
-            font-family: 'Cairo', sans-serif; font-weight: 900;
-            font-size: clamp(1.8rem, 3.5vw, 2.6rem); line-height: 1.3;
-            margin-bottom: 14px;
-        }
-        .section-desc { color: var(--gris); font-size: 0.95rem; line-height: 1.9; margin-bottom: 48px; max-width: 540px; }
-
+        .section-eyebrow { font-size: 0.8rem; font-weight: 700; color: var(--bleu); margin-bottom: 12px; }
+        .section-title { font-weight: 900; font-size: clamp(1.8rem, 3.5vw, 2.5rem); line-height: 1.2; margin-bottom: 14px; }
+        .section-desc { color: var(--gris); font-size: 1rem; line-height: 1.8; margin-bottom: 48px; max-width: 540px; }
         .packs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 60px; }
 
-        .pack-card {
-            background: white; border-radius: 20px;
-            border: 1.5px solid #E5E5E2; padding: 36px;
-            position: relative; transition: all 0.3s;
-        }
+        .pack-card { background: white; border-radius: 20px; border: 1.5px solid #E5E5E2; padding: 36px; position: relative; transition: all 0.3s; }
         .pack-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
-        .pack-card.popular {
-            border-color: var(--bleu);
-            box-shadow: 0 0 0 1px var(--bleu), 0 20px 60px rgba(26,86,219,0.12);
-        }
-        .popular-badge {
-            position: absolute; top: -14px; right: 50%; transform: translateX(50%);
-            background: var(--bleu); color: white;
-            font-size: 0.72rem; font-weight: 700;
-            padding: 5px 16px; border-radius: 100px; white-space: nowrap;
-        }
-        .pack-num { font-size: 0.72rem; font-weight: 700; color: var(--gris); margin-bottom: 8px; }
-        .pack-name { font-family: 'Cairo', sans-serif; font-weight: 900; font-size: 1.5rem; margin-bottom: 6px; }
-        .pack-tagline { font-size: 0.85rem; color: var(--gris); margin-bottom: 24px; line-height: 1.6; }
+        .pack-card.popular { border-color: var(--bleu); box-shadow: 0 0 0 1px var(--bleu), 0 20px 60px rgba(26,86,219,0.12); }
+        .popular-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--bleu); color: white; font-size: 0.75rem; font-weight: 700; padding: 5px 16px; border-radius: 100px; white-space: nowrap; }
+        .pack-num { font-size: 0.8rem; font-weight: 700; color: var(--gris); margin-bottom: 8px; }
+        .pack-name { font-weight: 900; font-size: 1.6rem; margin-bottom: 6px; }
+        .pack-tagline { font-size: 0.88rem; color: var(--gris); margin-bottom: 24px; }
         .pack-price-block { margin-bottom: 28px; }
-        .pack-price {
-            font-family: 'Cairo', sans-serif; font-weight: 900;
-            font-size: 2.6rem; line-height: 1; color: var(--noir); direction: ltr; display: inline-block;
-        }
-        .pack-price span { font-size: 1rem; font-weight: 600; color: var(--gris); }
-        .pack-delay {
-            display: inline-flex; align-items: center; gap: 6px;
-            background: var(--gris-clair); border-radius: 100px;
-            font-size: 0.75rem; font-weight: 700; color: var(--gris);
-            padding: 4px 12px; margin-top: 8px;
-        }
-        .pack-items { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
-        .pack-item { display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; font-weight: 600; flex-direction: row-reverse; }
-        .pack-item .ico {
-            width: 20px; height: 20px; background: #EFF6FF;
-            border-radius: 50%; display: flex; align-items: center;
-            justify-content: center; font-size: 0.55rem; color: var(--bleu);
-            flex-shrink: 0; margin-top: 2px; font-weight: 800;
-        }
+        .pack-price { font-weight: 900; font-size: 2.8rem; line-height: 1; color: var(--noir); }
+        .pack-price span { font-size: 1.1rem; font-weight: 600; color: var(--gris); }
+        .pack-delay { display: inline-flex; align-items: center; gap: 6px; background: var(--gris-clair); border-radius: 100px; font-size: 0.78rem; font-weight: 700; color: var(--gris); padding: 4px 12px; margin-top: 8px; }
+        .pack-items { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+        .pack-item { display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; font-weight: 600; }
+        .pack-item .ico { width: 20px; height: 20px; background: #EFF6FF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; color: var(--bleu); flex-shrink: 0; margin-top: 2px; font-weight: 900; }
         .pack-card.popular .pack-item .ico { background: var(--bleu); color: white; }
-        .pack-bonus {
-            background: #FFFBEB; border: 1px dashed #FCD34D;
-            border-radius: 10px; padding: 10px 14px;
-            font-size: 0.82rem; color: #92400E; margin-bottom: 24px; line-height: 1.6;
-        }
-        .btn-pack {
-            display: block; text-align: center; text-decoration: none;
-            padding: 14px; border-radius: 12px; font-weight: 700;
-            font-size: 0.9rem; transition: all 0.2s;
-        }
+        .pack-bonus { background: #FFFBEB; border: 1px dashed #FCD34D; border-radius: 10px; padding: 10px 14px; font-size: 0.85rem; color: #92400E; margin-bottom: 24px; }
+        .btn-pack { display: block; text-align: center; text-decoration: none; padding: 14px; border-radius: 12px; font-weight: 700; font-size: 0.95rem; transition: all 0.2s; }
         .btn-pack-outline { border: 2px solid var(--noir); color: var(--noir); }
         .btn-pack-outline:hover { background: var(--noir); color: white; }
         .btn-pack-fill { background: var(--bleu); color: white; box-shadow: 0 4px 20px rgba(26,86,219,0.3); }
         .btn-pack-fill:hover { background: var(--bleu-dark); transform: translateY(-1px); }
 
+        /* ===== TEAM BANNER ===== */
+        .team-banner { background: var(--noir); padding: 24px 6%; display: flex; align-items: center; justify-content: center; gap: 20px; text-align: center; }
+        .team-text p:first-child { color: white; font-size: 0.95rem; font-weight: 600; margin-bottom: 5px; }
+        .team-text p:last-child { color: rgba(255,255,255,0.45); font-size: 0.85rem; font-family: sans-serif; }
+
         /* ===== FORM SECTION ===== */
         .form-section { background: var(--gris-clair); padding: 80px 6%; }
-        .form-inner {
-            max-width: 1100px; margin: 0 auto;
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 60px; align-items: start;
-        }
-
-        .disclaimer {
-            background: #FFF7ED; border: 1px solid #FED7AA;
-            border-radius: 12px; padding: 16px 18px; margin-bottom: 28px;
-            display: flex; gap: 10px; align-items: flex-start; flex-direction: row-reverse;
-        }
-        .disclaimer p { font-size: 0.83rem; color: #92400E; line-height: 1.8; }
+        .form-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+        .disclaimer { background: #FFF7ED; border: 1px solid #FED7AA; border-radius: 12px; padding: 16px 18px; margin-bottom: 28px; display: flex; gap: 10px; align-items: flex-start; }
+        .disclaimer p { font-size: 0.85rem; color: #92400E; line-height: 1.7; }
         .disclaimer strong { color: #78350F; }
-
         .trust-list { display: flex; flex-direction: column; gap: 14px; }
-        .trust-item {
-            display: flex; gap: 14px; align-items: flex-start;
-            background: white; padding: 18px; border-radius: 14px;
-            border: 1px solid rgba(0,0,0,0.04); transition: transform 0.2s;
-            flex-direction: row-reverse;
-        }
-        .trust-item:hover { transform: translateX(-4px); }
+        .trust-item { display: flex; gap: 14px; align-items: flex-start; background: white; padding: 18px; border-radius: 14px; border: 1px solid rgba(0,0,0,0.04); transition: transform 0.2s; }
+        .trust-item:hover { transform: translateX(4px); }
         .trust-ico { font-size: 1.3rem; flex-shrink: 0; margin-top: 1px; }
-        .trust-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 3px; }
-        .trust-desc { font-size: 0.8rem; color: var(--gris); line-height: 1.7; }
+        .trust-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 3px; }
+        .trust-desc { font-size: 0.82rem; color: var(--gris); line-height: 1.6; }
 
-        .form-card {
-            background: white; border-radius: 20px; padding: 36px;
-            box-shadow: 0 8px 40px rgba(0,0,0,0.08);
-            border: 1px solid rgba(0,0,0,0.04);
-        }
-        .form-title { font-family: 'Cairo', sans-serif; font-weight: 900; font-size: 1.4rem; margin-bottom: 6px; }
-        .form-sub { font-size: 0.85rem; color: var(--gris); margin-bottom: 24px; line-height: 1.7; }
-
-        .form-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 16px; }
-        label { font-size: 0.78rem; font-weight: 700; color: var(--gris); }
-        input, select {
-            font-family: 'Cairo', sans-serif; font-size: 0.9rem;
-            padding: 12px 14px; border: 1.5px solid #E5E5E2;
-            border-radius: 10px; background: var(--blanc); color: var(--noir);
-            transition: all 0.2s; outline: none; width: 100%;
-            text-align: right;
-        }
+        .form-card { background: white; border-radius: 20px; padding: 36px; box-shadow: 0 8px 40px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.04); }
+        .form-title { font-weight: 700; font-size: 1.5rem; margin-bottom: 6px; }
+        .form-sub { font-size: 0.88rem; color: var(--gris); margin-bottom: 24px; }
+        .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+        label { font-size: 0.8rem; font-weight: 700; color: var(--gris); }
+        input, select { font-family: 'Cairo', sans-serif; font-size: 0.9rem; padding: 12px 14px; border: 1.5px solid #E5E5E2; border-radius: 10px; background: var(--blanc); color: var(--noir); transition: all 0.2s; outline: none; width: 100%; text-align: right; }
         input:focus, select:focus { border-color: var(--bleu); box-shadow: 0 0 0 3px rgba(26,86,219,0.08); }
-
-        .btn-submit {
-            width: 100%; background: var(--vert); color: white;
-            font-family: 'Cairo', sans-serif; font-weight: 700;
-            font-size: 1rem; padding: 15px; border-radius: 12px;
-            border: none; cursor: pointer; transition: all 0.25s;
-            margin-top: 8px; display: flex; align-items: center;
-            justify-content: center; gap: 10px;
-        }
+        .btn-submit { width: 100%; background: var(--vert); color: white; font-family: 'Cairo', sans-serif; font-weight: 700; font-size: 1rem; padding: 15px; border-radius: 12px; border: none; cursor: pointer; transition: all 0.25s; margin-top: 8px; display: flex; align-items: center; justify-content: center; gap: 10px; }
         .btn-submit:hover { background: var(--vert-dark); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37,211,102,0.3); }
         .btn-submit svg { width: 20px; height: 20px; fill: currentColor; }
 
-        /* Team banner */
-        .team-banner {
-            background: var(--noir); padding: 24px 6%;
-            display: flex; align-items: center; justify-content: center;
-            gap: 20px; text-align: center;
-        }
-        .team-text p:first-child { color: white; font-size: 0.95rem; font-weight: 600; margin-bottom: 5px; line-height: 1.7; }
-        .team-text p:last-child { color: rgba(255,255,255,0.45); font-size: 0.85rem; }
-
-        /* POPUP */
+        /* ===== POPUP ===== */
         .popup-overlay { display: none; position: fixed; inset: 0; z-index: 999; background: rgba(0,0,0,0.65); backdrop-filter: blur(4px); align-items: center; justify-content: center; padding: 20px; }
         .popup-overlay.active { display: flex; animation: fadeIn 0.3s ease; }
         .popup-box { background: white; border-radius: 24px; padding: 40px 32px; max-width: 420px; width: 100%; text-align: center; box-shadow: 0 30px 80px rgba(0,0,0,0.2); animation: slideUp 0.35s ease; }
         .popup-emoji { font-size: 3rem; display: block; margin-bottom: 14px; }
-        .popup-title { font-family: 'Cairo', sans-serif; font-weight: 900; font-size: 1.4rem; margin-bottom: 10px; }
-        .popup-msg { font-size: 0.9rem; color: var(--gris); line-height: 1.9; margin-bottom: 14px; }
-        .popup-alert { background: #FFF7ED; border: 1px solid #FED7AA; border-radius: 10px; padding: 12px 16px; margin-bottom: 14px; font-size: 0.86rem; color: #92400E; line-height: 1.7; }
+        .popup-title { font-weight: 700; font-size: 1.5rem; margin-bottom: 10px; }
+        .popup-msg { font-size: 0.95rem; color: var(--gris); line-height: 1.8; margin-bottom: 14px; }
+        .popup-alert { background: #FFF7ED; border: 1px solid #FED7AA; border-radius: 10px; padding: 12px 16px; margin-bottom: 14px; font-size: 0.88rem; color: #92400E; line-height: 1.7; }
         .popup-alert strong { display: block; color: #78350F; margin-bottom: 3px; }
-        .popup-timer { font-size: 0.8rem; color: var(--gris); }
+        .popup-arabic { font-size: 0.85rem; color: var(--gris); font-style: italic; margin-bottom: 18px; font-family: sans-serif; }
+        .popup-timer { font-size: 0.85rem; color: var(--gris); }
         .popup-bar { width: 100%; height: 3px; background: #E5E5E2; border-radius: 100px; margin-top: 14px; overflow: hidden; }
         .popup-bar-inner { height: 100%; background: var(--bleu); width: 100%; border-radius: 100px; }
 
-        footer { background: var(--noir); color: rgba(255,255,255,0.35); text-align: center; padding: 24px 6%; font-size: 0.82rem; }
+        footer { background: var(--noir); color: rgba(255,255,255,0.35); text-align: center; padding: 24px 6%; font-size: 0.85rem; }
         footer strong { color: rgba(255,255,255,0.7); }
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-        @media (max-width: 900px) {
-            .packs-grid { grid-template-columns: 1fr; }
-            .form-inner { grid-template-columns: 1fr; }
-            .stat-sep { display: none; }
-        }
-        @media (max-width: 600px) {
-            .hero-video { padding: 40px 5% 0; }
-            .pack-card { padding: 24px; }
-            .form-card { padding: 24px; }
-        }
+        @media (max-width: 900px) { .packs-grid { grid-template-columns: 1fr; } .form-inner { grid-template-columns: 1fr; } .stat-sep { display: none; } }
+        @media (max-width: 600px) { .hero { padding: 40px 5% 60px; } .pack-card { padding: 28px; } .form-card { padding: 24px; } }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">Vi<span>za</span>go</div>
-        <a href="#formulaire" class="btn-header">حجز مكالمة مجانية ←</a>
+        <div class="logo">Visago <span>🍁</span></div>
+        <a href="#formulaire" class="btn-header">إستشارة مجانية ←</a>
     </header>
 
-    <div class="hero-video">
-        <div class="hero-pretitle">🍁 متخصصون في كندا — المغرب</div>
-        <h1 class="hero-title">
-            ملفك لكندا<br>
-            <em>جاهز في 48 ساعة.</em>
-        </h1>
-        <p class="hero-sub">
-            CV كندي · رسالة تحفيزية · مسؤولو توظيف مستهدفون.<br>
-            بلا وعود كاذبة — غير عمل حقيقي ومضمون.
-        </p>
-        <div class="video-container">
-            <div class="video-box">
-                <!-- ضع هنا كود iframe الفيديو الخاص بك -->
-                <span>🎬</span>
-                <strong>فيديو الأفاتار الذكاء الاصطناعي</strong>
-                <p>[ضع iframe الفيديو هنا]</p>
-            </div>
-        </div>
+    <div class="hero">
+        <div class="hero-pretitle">🍁 متخصصون في ملفات الهجرة لكندا — المغرب</div>
+        <h1 class="hero-title">ملفك للهجرة إلى كندا<br><em>جاهز في 48 ساعة فقط.</em></h1>
+        <p class="hero-sub">سيرة ذاتية كندية · رسالة تحفيزية · استهداف المشغلين.<br>لا نبيع أوهام الفيزا — نقدم لك عملاً احترافياً وملموساً.</p>
     </div>
 
     <div class="stats-bar">
-        <div class="stat"><div class="stat-n">48h</div><div class="stat-l">الباقة الأساسية</div></div>
+        <div class="stat"><div class="stat-n">48 ساعة</div><div class="stat-l">العرض الأساسي</div></div>
         <div class="stat-sep"></div>
-        <div class="stat"><div class="stat-n">60h</div><div class="stat-l">الباقة المميزة</div></div>
+        <div class="stat"><div class="stat-n">60 ساعة</div><div class="stat-l">العرض المميز</div></div>
         <div class="stat-sep"></div>
         <div class="stat"><div class="stat-n">100%</div><div class="stat-l">مخصص لك</div></div>
         <div class="stat-sep"></div>
-        <div class="stat"><div class="stat-n">مجاني</div><div class="stat-l">الاتصال الأول</div></div>
+        <div class="stat"><div class="stat-n">0 درهم</div><div class="stat-l">إستشارة مجانية</div></div>
     </div>
 
     <div class="packs-section">
         <div class="section-eyebrow">عروضنا</div>
-        <h2 class="section-title">اختر باقتك لكندا 🍁</h2>
-        <p class="section-desc">باقتان مصممتان حسب مشروعك. كل ملف يُعد يدوياً من طرف فريقنا ويُسلَّم في الآجال المضمونة.</p>
+        <h2 class="section-title">اختر العرض المناسب لك</h2>
+        <p class="section-desc">صيغتان متكاملتان لتسريع مشروعك. يتم إعداد كل ملف يدوياً وبدقة عالية من طرف فريقنا لضمان تسليمه في الوقت المحدد.</p>
 
         <div class="packs-grid">
-
-            <!-- PACK 1 -->
             <div class="pack-card">
-                <div class="pack-num">الباقة 01</div>
-                <div class="pack-name">الأساسية</div>
-                <div class="pack-tagline">كل ما تحتاجه للتقدم لوظائف كندا</div>
+                <div class="pack-num">العرض 01</div>
+                <div class="pack-name">الأساسي (Essentiel)</div>
+                <div class="pack-tagline">كل ما تحتاجه للبدء في التقديم لكندا</div>
                 <div class="pack-price-block">
                     <div class="pack-price">900 <span>درهم</span></div>
-                    <div class="pack-delay">⏱ تسليم خلال 48 ساعة</div>
+                    <div class="pack-delay">⏱ التسليم خلال 48 ساعة</div>
                 </div>
                 <div class="pack-items">
-                    <div class="pack-item"><div class="ico">✓</div><span>CV على النمط الكندي الاحترافي</span></div>
+                    <div class="pack-item"><div class="ico">✓</div><span>سيرة ذاتية (CV) احترافية بالمعايير الكندية</span></div>
                     <div class="pack-item"><div class="ico">✓</div><span>رسالة تحفيزية مخصصة لملفك</span></div>
-                    <div class="pack-item"><div class="ico">✓</div><span>20 إيميل لمسؤولي التوظيف في كندا</span></div>
+                    <div class="pack-item"><div class="ico">✓</div><span>قائمة بـ 20 إيميل لأبرز المشغلين بكندا في مجالك</span></div>
                 </div>
-                <div class="pack-bonus">🎁 <strong>هدية مجانية :</strong> دليل PDF لاستخدام LinkedIn في كندا</div>
-                <a href="#formulaire" class="btn-pack btn-pack-outline">اختر هذه الباقة</a>
+                <div class="pack-bonus">🎁 <strong>هدية مجانية :</strong> دليل PDF الشامل لاستغلال LinkedIn لكندا</div>
+                <a href="#formulaire" class="btn-pack btn-pack-outline">اختر هذا العرض</a>
             </div>
 
-            <!-- PACK 2 -->
             <div class="pack-card popular">
                 <div class="popular-badge">⭐ الأكثر اكتمالاً</div>
-                <div class="pack-num">الباقة 02</div>
-                <div class="pack-name">المميزة</div>
-                <div class="pack-tagline">الملف الكامل + حضور احترافي على LinkedIn</div>
+                <div class="pack-num">العرض 02</div>
+                <div class="pack-name">المميز (Premium)</div>
+                <div class="pack-tagline">الملف الكامل + الحضور على LinkedIn</div>
                 <div class="pack-price-block">
                     <div class="pack-price">1300 <span>درهم</span></div>
-                    <div class="pack-delay">⏱ تسليم خلال 60 ساعة</div>
+                    <div class="pack-delay">⏱ التسليم خلال 60 ساعة</div>
                 </div>
                 <div class="pack-items">
-                    <div class="pack-item"><div class="ico">✓</div><span>كل محتوى الباقة الأساسية</span></div>
-                    <div class="pack-item"><div class="ico">✓</div><span>إنشاء وتهيئة حساب LinkedIn احترافي</span></div>
-                    <div class="pack-item"><div class="ico">✓</div><span>20 مسؤول توظيف إضافي (40 إجمالاً)</span></div>
-                    <div class="pack-item"><div class="ico">✓</div><span>ملف LinkedIn جاهز للتوظيف</span></div>
+                    <div class="pack-item"><div class="ico">✓</div><span>كل ما يتضمنه العرض الأساسي</span></div>
+                    <div class="pack-item"><div class="ico">✓</div><span>إنشاء وتحسين حساب LinkedIn احترافي</span></div>
+                    <div class="pack-item"><div class="ico">✓</div><span>20 مشغل إضافي (40 مشغل في المجموع)</span></div>
+                    <div class="pack-item"><div class="ico">✓</div><span>ملف LinkedIn جاهز لجذب المستقطبين</span></div>
                 </div>
-                <div class="pack-bonus">🎁 <strong>هدية مجانية :</strong> دليل PDF لاستخدام LinkedIn في كندا</div>
-                <a href="#formulaire" class="btn-pack btn-pack-fill">اختر هذه الباقة</a>
+                <div class="pack-bonus">🎁 <strong>هدية مجانية :</strong> دليل PDF الشامل لاستغلال LinkedIn لكندا</div>
+                <a href="#formulaire" class="btn-pack btn-pack-fill">اختر هذا العرض</a>
             </div>
-
         </div>
     </div>
 
     <div class="team-banner">
         <span style="font-size:1.8rem;">💪</span>
         <div class="team-text">
-            <p>فريقنا يعمل بلا توقف لتسليم كل ملف في الوقت المحدد، بالجودة التي تستحقها.</p>
-            <p>Notre équipe travaille sans relâche pour livrer chaque dossier dans les délais.</p>
+            <p>فريقنا يعمل دون توقف لتقديم كل ملف في الوقت المحدد، وبعناية فائقة تليق بطموحاتكم.</p>
+            <p>Notre équipe est disponible pour répondre à toutes vos questions.</p>
         </div>
     </div>
 
     <div class="form-section" id="formulaire">
         <div class="form-inner">
-
             <div>
-                <div class="section-eyebrow">لماذا Vizago ؟</div>
-                <h2 class="section-title" style="font-size:clamp(1.6rem,3vw,2.2rem);">مشروعك يستحق مرافقة حقيقية</h2>
-                <p class="section-desc">لا نبيعك نموذجاً جاهزاً. كل ملف يُعد يدوياً، مكيَّف مع ملفك الشخصي وقطاعك المهني.</p>
+                <div class="section-eyebrow">لماذا Visago ؟</div>
+                <h2 class="section-title" style="font-size:clamp(1.5rem,3vw,2.2rem);">مشروعك يستحق مرافقة حقيقية واحترافية</h2>
+                <p class="section-desc">لا نستخدم نماذج جاهزة أو عشوائية. كل ملف يتم صياغته يدوياً ليناسب مهنتك، خبرتك، والمقاطعة المستهدفة.</p>
 
                 <div class="disclaimer">
                     <span style="font-size:1.2rem;flex-shrink:0;">🚫</span>
-                    <p><strong>ما لا نفعله</strong><br>Vizago ليست مكتب هجرة معتمداً. نحن نُعد ملف ترشحك المهني. أنت من يتقدم بنفسه. احذر من أي خدمة تضمن لك تأشيرة.</p>
+                    <p><strong>تنبيه هام جداً</strong><br>Visago ليست وكالة هجرة معتمدة. نحن نجهز ملف ترشيحك والوثائق المهنية فقط، وأنت من تقدم بنفسك. احذر من أي خدمة تضمن لك الحصول على التأشيرة بشكل حتمي.</p>
                 </div>
 
                 <div class="trust-list">
                     <div class="trust-item">
                         <div class="trust-ico">🛡️</div>
                         <div>
-                            <div class="trust-title">بياناتك سرية 100%</div>
-                            <div class="trust-desc">معلوماتك تُستخدم فقط لإعداد ملفك. لا تُشارَك أبداً مع أي طرف ثالث.</div>
+                            <div class="trust-title">بياناتك آمنة ومحمية 100%</div>
+                            <div class="trust-desc">معلوماتك تستخدم حصرياً لإعداد ملفك الشخصي ولا يتم مشاركتها أبداً.</div>
                         </div>
                     </div>
                     <div class="trust-item">
                         <div class="trust-ico">⚡</div>
                         <div>
-                            <div class="trust-title">رد سريع عبر WhatsApp</div>
-                            <div class="trust-desc">فريقنا يتصل بك فور استلام طلبك لمناقشة مشروعك.</div>
-                        </div>
-                    </div>
-                    <div class="trust-item">
-                        <div class="trust-ico">🎯</div>
-                        <div>
-                            <div class="trust-title">ملف مصمم خصيصاً لك</div>
-                            <div class="trust-desc">مكيَّف مع مهنتك وخبرتك والمقاطعة الكندية التي تستهدفها.</div>
+                            <div class="trust-title">رد سريع عبر الواتساب</div>
+                            <div class="trust-desc">يتواصل معك فريقنا مباشرة بعد استقبال طلبك للإجابة على استفساراتك.</div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="form-card">
-                <div class="form-title">احجز مكالمتك المجانية</div>
-                <div class="form-sub">فريقنا سيتصل بك على WhatsApp خلال 24 ساعة.</div>
+                <div class="form-title">احجز اتصالك المجاني الآن</div>
+                <div class="form-sub">سيقوم فريقنا بالاتصال بك عبر الواتساب خلال 24 ساعة.</div>
 
                 <form id="lead-form" onsubmit="handleSubmit(event)">
                     <div class="form-group">
-                        <label for="nom">الاسم أو اللقب</label>
+                        <label for="nom">الاسم الكامل</label>
                         <input type="text" id="nom" required placeholder="مثال: أمين">
                     </div>
                     <div class="form-group">
-                        <label for="tel">رقم WhatsApp</label>
+                        <label for="tel">رقم الواتساب (WhatsApp)</label>
                         <input type="tel" id="tel" required placeholder="مثال: 212661234567+">
                     </div>
                     <div class="form-group">
-                        <label for="pack">الباقة المختارة</label>
+                        <label for="pack">العرض المطلوب</label>
                         <select id="pack">
-                            <option value="الباقة الأساسية 900 درهم">الباقة الأساسية — 900 درهم (48 ساعة)</option>
-                            <option value="الباقة المميزة 1300 درهم">الباقة المميزة — 1300 درهم (60 ساعة)</option>
-                            <option value="لم أقرر بعد">لم أقرر بعد</option>
+                            <option value="Pack Essentiel - 900 DH">العرض الأساسي — 900 درهم (48 ساعة)</option>
+                            <option value="Pack Premium - 1300 DH">العرض المميز — 1300 درهم (60 ساعة)</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn-submit">
-                        <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.5-5.739-1.451L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.966C16.228 1.975 13.763 1.05 11.201 1.05 5.762 1.05 1.34 5.421 1.336 10.85c-.001 1.744.463 3.448 1.343 4.965l-.973 3.55 3.64-.954zm10.954-7.64c-.23-.115-1.363-.674-1.57-.751-.207-.076-.358-.115-.508.114-.15.228-.579.751-.71.901-.13.15-.26.168-.49.053-.23-.115-.97-.358-1.848-1.143-.683-.61-1.144-1.365-1.278-1.6-.134-.23-.014-.354.101-.469.103-.103.23-.269.345-.404.115-.135.153-.23.23-.385.077-.154.039-.289-.02-.404-.057-.115-.508-1.229-.696-1.684-.183-.44-.368-.381-.508-.388-.13-.007-.279-.008-.428-.008-.15 0-.395.056-.602.284-.207.228-.791.773-.791 1.884 0 1.111.808 2.186.919 2.34.111.154 1.59 2.428 3.853 3.404.538.232 1.022.371 1.37.482.54.172 1.03.148 1.417.09.432-.065 1.363-.557 1.557-1.096.194-.539.194-1.002.135-1.095-.058-.094-.207-.154-.437-.27z"/></svg>
-                        احجز مكالمتي المجانية
-                    </button>
+                    <button type="submit" class="btn-submit">احجز إتصالك المجاني الآن</button>
                 </form>
             </div>
-
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 <strong>Vizago</strong> — إعداد ملفات التوظيف في كندا | جميع الحقوق محفوظة</p>
+        <p>&copy; 2026 <strong>Visago</strong> — إعداد وثائق ملف كندا | جميع الحقوق محفوظة</p>
     </footer>
 
     <div class="popup-overlay" id="popup">
         <div class="popup-box">
             <span class="popup-emoji">🎉</span>
-            <div class="popup-title">تم استلام طلبك !</div>
-            <p class="popup-msg">فريقنا سيتصل بك على WhatsApp <strong>في أقرب وقت ممكن</strong> — أحياناً في غضون ساعة !</p>
+            <div class="popup-title">تم استقبال طلبك بنجاح !</div>
+            <p class="popup-msg">يقوم فريقنا حالياً بدراسة معلوماتك الأولية، وسنتصل بك على الواتساب <strong>في أقرب وقت ممكن</strong> لإتمام المرافقة.</p>
             <div class="popup-alert">
-                <strong>⚠️ انتبه !</strong>
-                أبقِ هاتفك بالقرب منك وتحقق من رسائل WhatsApp. لا تفوّت اتصالنا !
+                <strong>⚠️ ابقَ مستعداً !</strong>
+                يرجى إبقاء هاتفك قريباً منك وعدم تفويت مكالمة فريقنا على الواتساب.
             </div>
-            <div class="popup-timer">⏱ الإغلاق التلقائي بعد <span id="countdown">6</span> ثوانٍ</div>
+            <p class="popup-arabic">Notre équipe vous contacte sur WhatsApp très rapidement.</p>
+            <div class="popup-timer">⏱ سيتم الإغلاق خلال <span id="countdown">6</span> ثوانٍ</div>
             <div class="popup-bar"><div class="popup-bar-inner" id="progress-bar"></div></div>
         </div>
     </div>
@@ -447,18 +309,15 @@
         async function handleSubmit(e) {
             e.preventDefault();
             const btn = document.querySelector('.btn-submit');
-            btn.innerHTML = `<svg style="animation:spin 1s linear infinite;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none" opacity="0.25"></circle><path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg> جارٍ الإرسال...`;
+            btn.innerHTML = `جاري الإرسال...`;
             btn.disabled = true;
 
             const payload = {
                 action: "addClient",
+                dateIngestion: new Date().toLocaleString("fr-FR"),
                 nom: document.getElementById('nom').value.trim(),
                 telephone: document.getElementById('tel').value.trim(),
-                statutAppel: "À appeler",
-                metier: "En attente d'appel",
-                statutPaiement: "Non Payé",
-                montant: "0 DH",
-                observations: "باقة مختارة : " + document.getElementById('pack').value + " | Source: Landing AR"
+                packSouhaite: document.getElementById('pack').value
             };
 
             try {
@@ -478,6 +337,7 @@
             const bar = document.getElementById('progress-bar');
             const countEl = document.getElementById('countdown');
             popup.classList.add('active');
+            bar.style.width = '100%';
             bar.style.transition = 'width 6000ms linear';
             setTimeout(() => bar.style.width = '0%', 50);
             let count = 6;
@@ -486,10 +346,6 @@
                 if (count <= 0) { clearInterval(iv); popup.classList.remove('active'); }
             }, 1000);
         }
-
-        document.getElementById('popup').addEventListener('click', function(e) {
-            if (e.target === this) this.classList.remove('active');
-        });
     </script>
 </body>
 </html>
