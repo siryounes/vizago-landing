@@ -240,11 +240,6 @@
             box-shadow: 0 8px 40px rgba(0,0,0,0.08);
             border: 1px solid rgba(0,0,0,0.04);
         }
-        .form-card {
-            background: white; border-radius: 20px; padding: 36px;
-            box-shadow: 0 8px 40px rgba(0,0,0,0.08);
-            border: 1px solid rgba(0,0,0,0.04);
-        }
         .form-title {
             font-family: 'Playfair Display', serif; font-weight: 700;
             font-size: 1.4rem; margin-bottom: 6px;
@@ -319,11 +314,13 @@
 </head>
 <body>
 
+    <!-- HEADER -->
     <header>
         <div class="logo">Vi<em>za</em>go</div>
         <a href="#formulaire" class="btn-header">Appel gratuit →</a>
     </header>
 
+    <!-- HERO + VIDEO -->
     <div class="hero-video">
         <div class="hero-pretitle">🍁 Spécialiste Canada — Maroc</div>
         <h1 class="hero-title">
@@ -336,6 +333,7 @@
         </p>
         <div class="video-container">
             <div class="video-box">
+                <!-- REMPLACE CE BLOC PAR TON IFRAME VIDÉO -->
                 <span>🎬</span>
                 <strong>Votre vidéo Avatar IA</strong>
                 <p>[Insérez votre iframe ici]</p>
@@ -343,6 +341,7 @@
         </div>
     </div>
 
+    <!-- STATS BAR -->
     <div class="stats-bar">
         <div class="stat"><div class="stat-n">48h</div><div class="stat-l">Pack 1</div></div>
         <div class="stat-sep"></div>
@@ -353,6 +352,7 @@
         <div class="stat"><div class="stat-n">0 DH</div><div class="stat-l">Appel offert</div></div>
     </div>
 
+    <!-- PACKS -->
     <div class="packs-section">
         <div class="section-eyebrow">Nos offres</div>
         <h2 class="section-title">Choisissez votre pack Canada</h2>
@@ -360,6 +360,7 @@
 
         <div class="packs-grid">
 
+            <!-- PACK 1 -->
             <div class="pack-card">
                 <div class="pack-num">Pack 01</div>
                 <div class="pack-name">Essentiel</div>
@@ -377,6 +378,7 @@
                 <a href="#formulaire" class="btn-pack btn-pack-outline">Choisir ce pack</a>
             </div>
 
+            <!-- PACK 2 -->
             <div class="pack-card popular">
                 <div class="popular-badge">⭐ Le plus complet</div>
                 <div class="pack-num">Pack 02</div>
@@ -399,6 +401,7 @@
         </div>
     </div>
 
+    <!-- TEAM BANNER -->
     <div class="team-banner">
         <span style="font-size:1.8rem;">💪</span>
         <div class="team-text">
@@ -407,9 +410,11 @@
         </div>
     </div>
 
+    <!-- FORM SECTION -->
     <div class="form-section" id="formulaire">
         <div class="form-inner">
 
+            <!-- LEFT -->
             <div>
                 <div class="section-eyebrow">Pourquoi Vizago ?</div>
                 <h2 class="section-title" style="font-size:clamp(1.6rem,3vw,2.2rem);">Votre projet mérite un vrai accompagnement</h2>
@@ -445,6 +450,7 @@
                 </div>
             </div>
 
+            <!-- RIGHT — FORM -->
             <div class="form-card">
                 <div class="form-title">Réservez votre appel gratuit</div>
                 <div class="form-sub">Notre équipe vous rappelle sur WhatsApp sous 24h.</div>
@@ -476,10 +482,12 @@
         </div>
     </div>
 
+    <!-- FOOTER -->
     <footer>
         <p>&copy; 2026 <strong>Vizago</strong> — Préparation de dossier Canada | Tous droits réservés</p>
     </footer>
 
+    <!-- POPUP -->
     <div class="popup-overlay" id="popup">
         <div class="popup-box">
             <span class="popup-emoji">🎉</span>
@@ -489,7 +497,7 @@
                 <strong>⚠️ Restez vigilant !</strong>
                 Gardez votre téléphone à portée. Ne manquez pas notre appel WhatsApp !
             </div>
-            <p class="popup-arabic">فريقنا سيتصل بك في أقرب وقت ممكن — كن جاهزاً على هاتفك !</p>
+            <p class="popup-arabic">فريقنا سيتصل بك في أقرب وقت Pediatric — كن جاهزاً على هاتفك !</p>
             <div class="popup-timer">⏱ Fermeture dans <span id="countdown">6</span>s</div>
             <div class="popup-bar"><div class="popup-bar-inner" id="progress-bar"></div></div>
         </div>
@@ -515,7 +523,6 @@
 
             // Nettoyage et sécurisation du numéro de téléphone 
             let rawPhone = document.getElementById('tel').value.trim();
-            // On ajoute une apostrophe au tout début : Google Sheets comprend ainsi qu'il s'agit de TEXTE pur
             let safePhone = "'" + rawPhone; 
 
             const payload = {
@@ -526,7 +533,7 @@
                 metier: "En attente d'appel",
                 statutPaiement: "Non Payé",
                 montant: finalPrice,
-                // On peuple toutes les variations de clés possibles pour correspondre à ton Apps Script
+                // On peuple toutes les variations pour être certain que ton Apps Script attrape la valeur
                 pack: selectedPack,
                 packSouhaite: selectedPack,
                 observations: "Pack souhaité : " + selectedPack + " | Source: Landing FR"
