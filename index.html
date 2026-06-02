@@ -1,93 +1,566 @@
-<!-- REMPLACE TON BLOC FORMULAIRE PAR CELUI-CI -->
-<div class="form-card">
-    <div class="form-title">Réservez votre appel gratuit</div>
-    <div class="form-sub">Notre équipe vous rappelle sur WhatsApp sous 24h.</div>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vizago — Ton dossier Canada prêt en 48h</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --noir: #0A0A0A; --blanc: #FAFAF8; --gris: #6B7280;
+            --gris-clair: #F4F4F2; --bleu: #1a56db; --bleu-dark: #1447c0;
+            --vert: #25D366; --vert-dark: #1fb855; --or: #C9922A;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: var(--blanc); color: var(--noir); overflow-x: hidden; }
 
-    <form id="lead-form" onsubmit="handleSubmit(event)">
-        <div class="form-group">
-            <label for="nom">Nom ou Prénom</label>
-            <input type="text" id="nom" required placeholder="Ex: Amine">
-        </div>
-        <div class="form-group">
-            <label for="tel">Numéro WhatsApp</label>
-            <input type="tel" id="tel" required placeholder="Ex: +212 661 234567">
-        </div>
-        <div class="form-group">
-            <label for="packChoice">Pack souhaité</label>
-            <select id="packChoice">
-                <option value="Pack Essentiel - 900 DH">Pack Essentiel — 900 DH (48h)</option>
-                <option value="Pack Premium - 1300 DH">Pack Premium — 1300 DH (60h)</option>
-                <option value="Je ne sais pas encore">Je ne sais pas encore</option>
-            </select>
-        </div>
-        <button type="submit" class="btn-submit">
-            <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.5-5.739-1.451L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.966C16.228 1.975 13.763 1.05 11.201 1.05 5.762 1.05 1.34 5.421 1.336 10.85c-.001 1.744.463 3.448 1.343 4.965l-.973 3.55 3.64-.954zm10.954-7.64c-.23-.115-1.363-.674-1.57-.751-.207-.076-.358-.115-.508.114-.15.228-.579.751-.71.901-.13.15-.26.168-.49.053-.23-.115-.97-.358-1.848-1.143-.683-.61-1.144-1.365-1.278-1.6-.134-.23-.014-.354.101-.469.103-.103.23-.269.345-.404.115-.135.153-.23.23-.385.077-.154.039-.289-.02-.404-.057-.115-.508-1.229-.696-1.684-.183-.44-.368-.381-.508-.388-.13-.007-.279-.008-.428-.008-.15 0-.395.056-.602.284-.207.228-.791.773-.791 1.884 0 1.111.808 2.186.919 2.34.111.154 1.59 2.428 3.853 3.404.538.232 1.022.371 1.37.482.54.172 1.03.148 1.417.09.432-.065 1.363-.557 1.557-1.096.194-.539.194-1.002.135-1.095-.058-.094-.207-.154-.437-.27z"/></svg>
-            Réserver mon appel gratuit
-        </button>
-    </form>
-</div>
+        /* ===== HEADER ===== */
+        header {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(250,250,248,0.95); backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0,0,0,0.07);
+            padding: 0 6%; height: 64px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .logo {
+            font-family: 'Playfair Display', serif; font-weight: 900;
+            font-size: 1.5rem; letter-spacing: -0.01em; color: var(--noir);
+            display: flex; align-items: center; gap: 8px;
+        }
+        .logo em { font-style: normal; color: var(--bleu); }
+        .btn-header {
+            background: var(--noir); color: white; font-weight: 600;
+            font-size: 0.8rem; padding: 9px 20px; border-radius: 8px;
+            text-decoration: none; transition: all 0.2s; letter-spacing: 0.02em;
+        }
+        .btn-header:hover { background: var(--bleu); }
 
-<!-- METS À JOUR TON SCRIPT JAVASCRIPT AVEC CELUI-CI -->
-<script>
-    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzXfz4uTVFean9qd83PTJvrbdEOBHm3Yu_1d9zFymnMaz-24DvuGuYVzJ9n8CgNxPw/exec";
-
-    async function handleSubmit(e) {
-        e.preventDefault();
-        const btn = document.querySelector('.btn-submit');
-        btn.innerHTML = `<svg style="animation:spin 1s linear infinite;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none" opacity="0.25"></circle><path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg> Transmission...`;
-        btn.disabled = true;
-
-        const selectedPack = document.getElementById('packChoice').value;
-        let finalPrice = "En attente";
-        
-        if (selectedPack.includes("900 DH")) {
-            finalPrice = "900 DH";
-        } else if (selectedPack.includes("1300 DH")) {
-            finalPrice = "1300 DH";
+        /* ===== HERO VIDEO ===== */
+        .hero-video {
+            background: var(--noir);
+            padding: 60px 6% 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-video::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(26,86,219,0.15) 0%, transparent 65%);
+        }
+        .hero-pretitle {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+            color: rgba(255,255,255,0.7); font-size: 0.72rem; font-weight: 600;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            padding: 6px 16px; border-radius: 100px; margin-bottom: 24px;
+            position: relative; z-index: 1;
+        }
+        .hero-title {
+            font-family: 'Playfair Display', serif; font-weight: 900;
+            font-size: clamp(2.2rem, 5vw, 3.8rem); line-height: 1.1;
+            color: white; margin-bottom: 16px;
+            position: relative; z-index: 1;
+        }
+        .hero-title em { font-style: italic; color: #60a5fa; }
+        .hero-sub {
+            font-size: 1rem; color: rgba(255,255,255,0.55);
+            max-width: 520px; margin: 0 auto 40px; line-height: 1.7;
+            position: relative; z-index: 1;
         }
 
-        // Nettoyage et sécurisation du numéro de téléphone pour éviter le bug #ERROR! de Google Sheets
-        let rawPhone = document.getElementById('tel').value.trim();
-        // On ajoute une apostrophe au tout début : Google Sheets comprend ainsi qu'il s'agit de TEXTE pur
-        let safePhone = "'" + rawPhone; 
+        /* VIDEO CONTAINER */
+        .video-container {
+            position: relative; z-index: 1;
+            max-width: 700px; margin: 0 auto;
+            border-radius: 20px 20px 0 0; overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 -20px 60px rgba(26,86,219,0.2);
+        }
+        .video-box {
+            aspect-ratio: 16/9; background: #111827;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            gap: 12px;
+        }
+        .video-box span { font-size: 2.5rem; }
+        .video-box p { color: #475569; font-size: 0.82rem; }
+        .video-box strong { color: #64748b; display: block; font-size: 0.9rem; margin-top: 4px; }
 
-        const payload = {
-            action: "addClient",
-            nom: document.getElementById('nom').value.trim(),
-            telephone: safePhone, 
-            statutAppel: "À appeler",
-            metier: "En attente d'appel",
-            statutPaiement: "Non Payé",
-            montant: finalPrice,
-            // On envoie le choix dans 'pack' ET 'observations' pour être sûr que ton Apps Script attrape la bonne colonne
-            pack: selectedPack,
-            packSouhaite: selectedPack,
-            observations: "Choix : " + selectedPack
-        };
+        /* ===== STATS BAR ===== */
+        .stats-bar {
+            background: white; border-bottom: 1px solid #E5E5E2;
+            padding: 20px 6%; display: flex;
+            align-items: center; justify-content: center;
+            gap: 48px; flex-wrap: wrap;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        .stat { text-align: center; }
+        .stat-n {
+            font-family: 'Playfair Display', serif; font-weight: 700;
+            font-size: 1.6rem; color: var(--bleu); line-height: 1;
+        }
+        .stat-l { font-size: 0.72rem; color: var(--gris); font-weight: 600; margin-top: 3px; text-transform: uppercase; letter-spacing: 0.06em; }
+        .stat-sep { width: 1px; height: 36px; background: #E5E5E2; }
 
-        try {
-            await fetch(APPS_SCRIPT_URL, {
-                method: 'POST', mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-        } catch (err) { console.log('Transmission effectuée.'); }
+        /* ===== PACKS SECTION ===== */
+        .packs-section {
+            padding: 80px 6%;
+            max-width: 1100px; margin: 0 auto;
+        }
+        .section-eyebrow {
+            font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em;
+            text-transform: uppercase; color: var(--bleu); margin-bottom: 12px;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif; font-weight: 900;
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem); line-height: 1.15;
+            margin-bottom: 14px; letter-spacing: -0.01em;
+        }
+        .section-desc { color: var(--gris); font-size: 0.95rem; line-height: 1.7; margin-bottom: 48px; max-width: 540px; }
 
-        document.getElementById('lead-form').style.display = 'none';
-        showPopup();
-    }
+        .packs-grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 24px; margin-bottom: 60px;
+        }
 
-    function showPopup() {
-        const popup = document.getElementById('popup');
-        const bar = document.getElementById('progress-bar');
-        const countEl = document.getElementById('countdown');
-        popup.classList.add('active');
-        bar.style.transition = 'width 6000ms linear';
-        setTimeout(() => bar.style.width = '0%', 50);
-        let count = 6;
-        const iv = setInterval(() => {
-            count--; countEl.textContent = count;
-            if (count <= 0) { clearInterval(iv); popup.classList.remove('active'); }
-        }, 1000);
-    }
-</script>
+        /* PACK CARD */
+        .pack-card {
+            background: white; border-radius: 20px;
+            border: 1.5px solid #E5E5E2; padding: 36px;
+            position: relative; transition: all 0.3s;
+        }
+        .pack-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+        .pack-card.popular {
+            border-color: var(--bleu);
+            box-shadow: 0 0 0 1px var(--bleu), 0 20px 60px rgba(26,86,219,0.12);
+        }
+
+        .popular-badge {
+            position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+            background: var(--bleu); color: white;
+            font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em;
+            text-transform: uppercase; padding: 5px 16px; border-radius: 100px;
+            white-space: nowrap;
+        }
+
+        .pack-num {
+            font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+            text-transform: uppercase; color: var(--gris); margin-bottom: 8px;
+        }
+        .pack-name {
+            font-family: 'Playfair Display', serif; font-weight: 700;
+            font-size: 1.5rem; margin-bottom: 6px;
+        }
+        .pack-tagline { font-size: 0.82rem; color: var(--gris); margin-bottom: 24px; }
+
+        .pack-price-block { margin-bottom: 28px; }
+        .pack-price {
+            font-family: 'Playfair Display', serif; font-weight: 900;
+            font-size: 2.8rem; line-height: 1; color: var(--noir);
+        }
+        .pack-price span { font-size: 1rem; font-weight: 500; color: var(--gris); }
+        .pack-delay {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: var(--gris-clair); border-radius: 100px;
+            font-size: 0.72rem; font-weight: 700; color: var(--gris);
+            padding: 4px 12px; margin-top: 8px;
+        }
+
+        .pack-items { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+        .pack-item {
+            display: flex; align-items: flex-start; gap: 10px;
+            font-size: 0.85rem; font-weight: 500;
+        }
+        .pack-item .ico {
+            width: 20px; height: 20px; background: #EFF6FF;
+            border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; font-size: 0.55rem; color: var(--bleu);
+            flex-shrink: 0; margin-top: 1px; font-weight: 800;
+        }
+        .pack-card.popular .pack-item .ico { background: var(--bleu); color: white; }
+
+        .pack-bonus {
+            background: #FFFBEB; border: 1px dashed #FCD34D;
+            border-radius: 10px; padding: 10px 14px;
+            font-size: 0.78rem; color: #92400E; margin-bottom: 24px;
+        }
+
+        .btn-pack {
+            display: block; text-align: center; text-decoration: none;
+            padding: 14px; border-radius: 12px; font-weight: 700;
+            font-size: 0.88rem; transition: all 0.2s; letter-spacing: 0.02em;
+        }
+        .btn-pack-outline {
+            border: 2px solid var(--noir); color: var(--noir);
+        }
+        .btn-pack-outline:hover { background: var(--noir); color: white; }
+        .btn-pack-fill {
+            background: var(--bleu); color: white;
+            box-shadow: 0 4px 20px rgba(26,86,219,0.3);
+        }
+        .btn-pack-fill:hover { background: var(--bleu-dark); transform: translateY(-1px); }
+
+        /* ===== FORM SECTION ===== */
+        .form-section {
+            background: var(--gris-clair);
+            padding: 80px 6%;
+        }
+        .form-inner {
+            max-width: 1100px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 60px; align-items: start;
+        }
+
+        /* Disclaimer */
+        .disclaimer {
+            background: #FFF7ED; border: 1px solid #FED7AA;
+            border-radius: 12px; padding: 16px 18px; margin-bottom: 28px;
+            display: flex; gap: 10px; align-items: flex-start;
+        }
+        .disclaimer p { font-size: 0.8rem; color: #92400E; line-height: 1.6; }
+        .disclaimer strong { color: #78350F; }
+
+        /* Trust */
+        .trust-list { display: flex; flex-direction: column; gap: 14px; }
+        .trust-item {
+            display: flex; gap: 14px; align-items: flex-start;
+            background: white; padding: 18px; border-radius: 14px;
+            border: 1px solid rgba(0,0,0,0.04); transition: transform 0.2s;
+        }
+        .trust-item:hover { transform: translateX(4px); }
+        .trust-ico { font-size: 1.3rem; flex-shrink: 0; margin-top: 1px; }
+        .trust-title { font-weight: 700; font-size: 0.88rem; margin-bottom: 3px; }
+        .trust-desc { font-size: 0.78rem; color: var(--gris); line-height: 1.6; }
+
+        /* Form card */
+        .form-card {
+            background: white; border-radius: 20px; padding: 36px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        .form-card {
+            background: white; border-radius: 20px; padding: 36px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        .form-title {
+            font-family: 'Playfair Display', serif; font-weight: 700;
+            font-size: 1.4rem; margin-bottom: 6px;
+        }
+        .form-sub { font-size: 0.82rem; color: var(--gris); margin-bottom: 24px; }
+
+        .form-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 16px; }
+        label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gris); }
+        input, select {
+            font-family: 'Inter', sans-serif; font-size: 0.9rem;
+            padding: 12px 14px; border: 1.5px solid #E5E5E2;
+            border-radius: 10px; background: var(--blanc); color: var(--noir);
+            transition: all 0.2s; outline: none; width: 100%;
+        }
+        input:focus, select:focus { border-color: var(--bleu); box-shadow: 0 0 0 3px rgba(26,86,219,0.08); }
+
+        .btn-submit {
+            width: 100%; background: var(--vert); color: white;
+            font-family: 'Inter', sans-serif; font-weight: 700;
+            font-size: 0.95rem; padding: 15px; border-radius: 12px;
+            border: none; cursor: pointer; transition: all 0.25s;
+            margin-top: 8px; display: flex; align-items: center;
+            justify-content: center; gap: 10px;
+        }
+        .btn-submit:hover { background: var(--vert-dark); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37,211,102,0.3); }
+        .btn-submit svg { width: 20px; height: 20px; fill: currentColor; }
+
+        /* Team banner */
+        .team-banner {
+            background: var(--noir); padding: 24px 6%;
+            display: flex; align-items: center; justify-content: center;
+            gap: 20px; text-align: center;
+        }
+        .team-text p:first-child { color: white; font-size: 0.9rem; font-weight: 500; margin-bottom: 5px; }
+        .team-text p:last-child { color: rgba(255,255,255,0.45); font-size: 0.85rem; direction: rtl; }
+
+        /* ===== POPUP ===== */
+        .popup-overlay { display: none; position: fixed; inset: 0; z-index: 999; background: rgba(0,0,0,0.65); backdrop-filter: blur(4px); align-items: center; justify-content: center; padding: 20px; }
+        .popup-overlay.active { display: flex; animation: fadeIn 0.3s ease; }
+        .popup-box { background: white; border-radius: 24px; padding: 40px 32px; max-width: 420px; width: 100%; text-align: center; box-shadow: 0 30px 80px rgba(0,0,0,0.2); animation: slideUp 0.35s ease; }
+        .popup-emoji { font-size: 3rem; display: block; margin-bottom: 14px; }
+        .popup-title { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.4rem; margin-bottom: 10px; }
+        .popup-msg { font-size: 0.9rem; color: var(--gris); line-height: 1.7; margin-bottom: 14px; }
+        .popup-alert { background: #FFF7ED; border: 1px solid #FED7AA; border-radius: 10px; padding: 12px 16px; margin-bottom: 14px; font-size: 0.84rem; color: #92400E; line-height: 1.6; }
+        .popup-alert strong { display: block; color: #78350F; margin-bottom: 3px; }
+        .popup-arabic { font-size: 0.84rem; color: var(--gris); direction: rtl; font-style: italic; margin-bottom: 18px; }
+        .popup-timer { font-size: 0.78rem; color: var(--gris); }
+        .popup-bar { width: 100%; height: 3px; background: #E5E5E2; border-radius: 100px; margin-top: 14px; overflow: hidden; }
+        .popup-bar-inner { height: 100%; background: var(--bleu); width: 100%; border-radius: 100px; }
+
+        /* Footer */
+        footer { background: var(--noir); color: rgba(255,255,255,0.35); text-align: center; padding: 24px 6%; font-size: 0.78rem; }
+        footer strong { color: rgba(255,255,255,0.7); }
+
+        /* Animations */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .packs-grid { grid-template-columns: 1fr; }
+            .form-inner { grid-template-columns: 1fr; }
+            .stat-sep { display: none; }
+        }
+        @media (max-width: 600px) {
+            .hero-video { padding: 40px 5% 0; }
+            .pack-card { padding: 28px; }
+            .form-card { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Vi<em>za</em>go</div>
+        <a href="#formulaire" class="btn-header">Appel gratuit →</a>
+    </header>
+
+    <div class="hero-video">
+        <div class="hero-pretitle">🍁 Spécialiste Canada — Maroc</div>
+        <h1 class="hero-title">
+            Ton dossier Canada<br>
+            <em>prêt en 48 heures.</em>
+        </h1>
+        <p class="hero-sub">
+            CV canadien · Lettre de motivation · Recruteurs ciblés.<br>
+            Pas de promesse de visa — que du concret.
+        </p>
+        <div class="video-container">
+            <div class="video-box">
+                <span>🎬</span>
+                <strong>Votre vidéo Avatar IA</strong>
+                <p>[Insérez votre iframe ici]</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="stats-bar">
+        <div class="stat"><div class="stat-n">48h</div><div class="stat-l">Pack 1</div></div>
+        <div class="stat-sep"></div>
+        <div class="stat"><div class="stat-n">60h</div><div class="stat-l">Pack 2</div></div>
+        <div class="stat-sep"></div>
+        <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Personnalisé</div></div>
+        <div class="stat-sep"></div>
+        <div class="stat"><div class="stat-n">0 DH</div><div class="stat-l">Appel offert</div></div>
+    </div>
+
+    <div class="packs-section">
+        <div class="section-eyebrow">Nos offres</div>
+        <h2 class="section-title">Choisissez votre pack Canada</h2>
+        <p class="section-desc">Deux formules adaptées à votre projet. Chaque dossier est préparé manuellement par notre équipe, livré dans les délais garantis.</p>
+
+        <div class="packs-grid">
+
+            <div class="pack-card">
+                <div class="pack-num">Pack 01</div>
+                <div class="pack-name">Essentiel</div>
+                <div class="pack-tagline">Tout ce qu'il faut pour postuler au Canada</div>
+                <div class="pack-price-block">
+                    <div class="pack-price">900 <span>DH</span></div>
+                    <div class="pack-delay">⏱ Livraison sous 48h</div>
+                </div>
+                <div class="pack-items">
+                    <div class="pack-item"><div class="ico">✓</div><span>CV format canadien professionnel</span></div>
+                    <div class="pack-item"><div class="ico">✓</div><span>Lettre de motivation personnalisée</span></div>
+                    <div class="pack-item"><div class="ico">✓</div><span>20 emails recruteurs canadiens ciblés</span></div>
+                </div>
+                <div class="pack-bonus">🎁 <strong>Bonus offert :</strong> Guide PDF LinkedIn Canada</div>
+                <a href="#formulaire" class="btn-pack btn-pack-outline">Choisir ce pack</a>
+            </div>
+
+            <div class="pack-card popular">
+                <div class="popular-badge">⭐ Le plus complet</div>
+                <div class="pack-num">Pack 02</div>
+                <div class="pack-name">Premium</div>
+                <div class="pack-tagline">Dossier + présence LinkedIn active</div>
+                <div class="pack-price-block">
+                    <div class="pack-price">1300 <span>DH</span></div>
+                    <div class="pack-delay">⏱ Livraison sous 60h</div>
+                </div>
+                <div class="pack-items">
+                    <div class="pack-item"><div class="ico">✓</div><span>Tout du Pack Essentiel</span></div>
+                    <div class="pack-item"><div class="ico">✓</div><span>Création compte LinkedIn optimisé</span></div>
+                    <div class="pack-item"><div class="ico">✓</div><span>20 recruteurs supplémentaires (40 au total)</span></div>
+                    <div class="pack-item"><div class="ico">✓</div><span>Profil LinkedIn prêt à l'emploi</span></div>
+                </div>
+                <div class="pack-bonus">🎁 <strong>Bonus offert :</strong> Guide PDF LinkedIn Canada</div>
+                <a href="#formulaire" class="btn-pack btn-pack-fill">Choisir ce pack</a>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="team-banner">
+        <span style="font-size:1.8rem;">💪</span>
+        <div class="team-text">
+            <p>Notre équipe travaille sans relâche pour livrer chaque dossier dans les délais, avec le soin qu'il mérite.</p>
+            <p>فريقنا متاح من الاثنين إلى السبت — اطرح أسئلتك، سنرد عليك.</p>
+        </div>
+    </div>
+
+    <div class="form-section" id="formulaire">
+        <div class="form-inner">
+
+            <div>
+                <div class="section-eyebrow">Pourquoi Vizago ?</div>
+                <h2 class="section-title" style="font-size:clamp(1.6rem,3vw,2.2rem);">Votre projet mérite un vrai accompagnement</h2>
+                <p class="section-desc">Pas de template générique. Chaque dossier est préparé manuellement, adapté à votre profil et votre secteur.</p>
+
+                <div class="disclaimer">
+                    <span style="font-size:1.2rem;flex-shrink:0;">🚫</span>
+                    <p><strong>Ce que nous ne faisons PAS</strong><br>Vizago n'est pas un cabinet d'immigration agréé. Nous préparons votre dossier de candidature. Vous postulez vous-même. Méfiez-vous de tout service qui garantit un visa.</p>
+                </div>
+
+                <div class="trust-list">
+                    <div class="trust-item">
+                        <div class="trust-ico">🛡️</div>
+                        <div>
+                            <div class="trust-title">Données 100% confidentielles</div>
+                            <div class="trust-desc">Vos informations servent uniquement à préparer votre dossier. Jamais partagées.</div>
+                        </div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-ico">⚡</div>
+                        <div>
+                            <div class="trust-title">Réponse rapide sur WhatsApp</div>
+                            <div class="trust-desc">Notre équipe vous contacte dès réception de votre demande.</div>
+                        </div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-ico">🎯</div>
+                        <div>
+                            <div class="trust-title">Dossier sur mesure</div>
+                            <div class="trust-desc">Adapté à votre métier, votre expérience et la province canadienne visée.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-card">
+                <div class="form-title">Réservez votre appel gratuit</div>
+                <div class="form-sub">Notre équipe vous rappelle sur WhatsApp sous 24h.</div>
+
+                <form id="lead-form" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="nom">Nom ou Prénom</label>
+                        <input type="text" id="nom" required placeholder="Ex: Amine">
+                    </div>
+                    <div class="form-group">
+                        <label for="tel">Numéro WhatsApp</label>
+                        <input type="tel" id="tel" required placeholder="Ex: +212 661 234567">
+                    </div>
+                    <div class="form-group">
+                        <label for="pack">Pack souhaité</label>
+                        <select id="pack">
+                            <option value="Pack Essentiel — 900 DH">Pack Essentiel — 900 DH (48h)</option>
+                            <option value="Pack Premium — 1300 DH">Pack Premium — 1300 DH (60h)</option>
+                            <option value="Je ne sais pas encore">Je ne sais pas encore</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-submit">
+                        <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.5-5.739-1.451L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.966C16.228 1.975 13.763 1.05 11.201 1.05 5.762 1.05 1.34 5.421 1.336 10.85c-.001 1.744.463 3.448 1.343 4.965l-.973 3.55 3.64-.954zm10.954-7.64c-.23-.115-1.363-.674-1.57-.751-.207-.076-.358-.115-.508.114-.15.228-.579.751-.71.901-.13.15-.26.168-.49.053-.23-.115-.97-.358-1.848-1.143-.683-.61-1.144-1.365-1.278-1.6-.134-.23-.014-.354.101-.469.103-.103.23-.269.345-.404.115-.135.153-.23.23-.385.077-.154.039-.289-.02-.404-.057-.115-.508-1.229-.696-1.684-.183-.44-.368-.381-.508-.388-.13-.007-.279-.008-.428-.008-.15 0-.395.056-.602.284-.207.228-.791.773-.791 1.884 0 1.111.808 2.186.919 2.34.111.154 1.59 2.428 3.853 3.404.538.232 1.022.371 1.37.482.54.172 1.03.148 1.417.09.432-.065 1.363-.557 1.557-1.096.194-.539.194-1.002.135-1.095-.058-.094-.207-.154-.437-.27z"/></svg>
+                        Réserver mon appel gratuit
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 <strong>Vizago</strong> — Préparation de dossier Canada | Tous droits réservés</p>
+    </footer>
+
+    <div class="popup-overlay" id="popup">
+        <div class="popup-box">
+            <span class="popup-emoji">🎉</span>
+            <div class="popup-title">Demande reçue !</div>
+            <p class="popup-msg">Notre équipe va analyser votre profil et vous contacter sur WhatsApp <strong>dans les plus brefs délais</strong> — parfois dans l'heure !</p>
+            <div class="popup-alert">
+                <strong>⚠️ Restez vigilant !</strong>
+                Gardez votre téléphone à portée. Ne manquez pas notre appel WhatsApp !
+            </div>
+            <p class="popup-arabic">فريقنا سيتصل بك في أقرب وقت ممكن — كن جاهزاً على هاتفك !</p>
+            <div class="popup-timer">⏱ Fermeture dans <span id="countdown">6</span>s</div>
+            <div class="popup-bar"><div class="popup-bar-inner" id="progress-bar"></div></div>
+        </div>
+    </div>
+
+    <script>
+        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzXfz4uTVFean9qd83PTJvrbdEOBHm3Yu_1d9zFymnMaz-24DvuGuYVzJ9n8CgNxPw/exec";
+
+        async function handleSubmit(e) {
+            e.preventDefault();
+            const btn = document.querySelector('.btn-submit');
+            btn.innerHTML = `<svg style="animation:spin 1s linear infinite;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none" opacity="0.25"></circle><path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg> Transmission...`;
+            btn.disabled = true;
+
+            const selectedPack = document.getElementById('pack').value;
+            let finalPrice = "En attente";
+            
+            if (selectedPack.includes("900 DH")) {
+                finalPrice = "900 DH";
+            } else if (selectedPack.includes("1300 DH")) {
+                finalPrice = "1300 DH";
+            }
+
+            // Nettoyage et sécurisation du numéro de téléphone 
+            let rawPhone = document.getElementById('tel').value.trim();
+            // On ajoute une apostrophe au tout début : Google Sheets comprend ainsi qu'il s'agit de TEXTE pur
+            let safePhone = "'" + rawPhone; 
+
+            const payload = {
+                action: "addClient",
+                nom: document.getElementById('nom').value.trim(),
+                telephone: safePhone,
+                statutAppel: "À appeler",
+                metier: "En attente d'appel",
+                statutPaiement: "Non Payé",
+                montant: finalPrice,
+                // On peuple toutes les variations de clés possibles pour correspondre à ton Apps Script
+                pack: selectedPack,
+                packSouhaite: selectedPack,
+                observations: "Pack souhaité : " + selectedPack + " | Source: Landing FR"
+            };
+
+            try {
+                await fetch(APPS_SCRIPT_URL, {
+                    method: 'POST', mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+            } catch (err) { console.log('Transmission effectuée.'); }
+
+            document.getElementById('lead-form').style.display = 'none';
+            showPopup();
+        }
+
+        function showPopup() {
+            const popup = document.getElementById('popup');
+            const bar = document.getElementById('progress-bar');
+            const countEl = document.getElementById('countdown');
+            popup.classList.add('active');
+            bar.style.transition = 'width 6000ms linear';
+            setTimeout(() => bar.style.width = '0%', 50);
+            let count = 6;
+            const iv = setInterval(() => {
+                count--; countEl.textContent = count;
+                if (count <= 0) { clearInterval(iv); popup.classList.remove('active'); }
+            }, 1000);
+        }
+
+        document.getElementById('popup').addEventListener('click', function(e) {
+            if (e.target === this) this.classList.remove('active');
+        });
+    </script>
+</body>
+</html>
